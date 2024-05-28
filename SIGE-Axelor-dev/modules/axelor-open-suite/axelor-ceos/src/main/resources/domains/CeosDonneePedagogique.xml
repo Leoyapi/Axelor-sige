@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<domain-models xmlns="http://axelor.com/xml/ns/domain-models"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/domain-models http://axelor.com/xml/ns/domain-models/domain-models_6.1.xsd">
+
+  <module name="human-resource" package="com.axelor.apps.hr.db"/>
+
+  <entity name="CeosDonneePedagogique" cacheable="true">
+    <string name="ordreEnseignement" title="Ordre d'enseignement"/>
+    <boolean name="enseignantBivalent" title="Enseignant bivalent"/>
+    <many-to-one ref="com.axelor.apps.hr.db.CeosDiscipline" name="donneePedagogiqueDE" title="Discipline enseignée"/>
+    <integer name="nombreAnneeExDis" title="Nombre d’années exercées dans la discipline"/>
+    <string name="commentaires" title="Commentaires" large="true"/>
+  </entity>
+</domain-models>

@@ -1,0 +1,105 @@
+import com.axelor.gradle.tasks.CheckCredentialsInRptdesign
+import com.axelor.gradle.tasks.GenerateAosChangelog
+import com.axelor.gradle.tasks.CheckEOLCharsInCsv
+
+plugins {
+  id 'com.axelor.app'
+}
+
+axelor {
+  title "Axelor ERP"
+  description "Axelor Entreprise Application"
+}
+
+allprojects {
+  apply plugin: 'idea'
+  apply plugin: 'eclipse'
+
+  group = 'com.axelor.apps'
+  version = '7.2.1'
+
+  java {
+    toolchain {
+      languageVersion = JavaLanguageVersion.of(11)
+    }
+  }
+
+  afterEvaluate {
+    test {
+      useJUnitPlatform()
+      beforeTest { descriptor ->
+        logger.lifecycle('Running: ' + descriptor)
+      }
+    }
+  }
+
+  configurations {
+    runtimeClasspath.exclude group: "org.eclipse.birt.runtime.3_7_1", module: "org.apache.commons.codec"
+  }
+}
+
+tasks.withType(PublishToMavenRepository).configureEach { it.enabled = false }
+
+dependencies {
+  gradle.appModules.each { dir ->
+    implementation project(":modules:$dir.name")
+  }
+}
+
+apply from: 'gradle/style.gradle'
+
+task("dataImport", type: JavaExec) {
+  mainClass = "com.axelor.apps.erp.Main"
+  classpath = sourceSets.main.runtimeClasspath
+  if (System.getProperty("exec.args") != null) {
+    args System.getProperty("exec.args").split()
+  }
+}
+
+task archiveReports(type: Zip) {
+  file("modules").traverse(type: groovy.io.FileType.DIRECTORIES, maxDepth: 1) { dir ->
+    if (new File(dir, "build.gradle").exists() && new File(dir, "/src/main/resources/reports").exists()) {
+      new File(dir, "/src/main/resources/reports/").listFiles().each { report ->
+        from report.getPath()
+      }
+    }
+  }
+
+  classifier 'reports'
+  includeEmptyDirs = false
+  destinationDirectory = file("$buildDir/libs")
+}
+
+
+task generateChangelog(type: GenerateAosChangelog) {
+  group "Axelor application"
+  description "Generate change logs from unreleased entries."
+  files = fileTree(projectDir) {
+    include '**/changelogs/**/*.yml'
+    include '**/changelogs/**/*.yaml'
+  }
+}
+
+task checkCsvEOL(type: CheckEOLCharsInCsv) {
+  group "Axelor application"
+  description "Generate change logs from unreleased entries."
+  files = fileTree(projectDir) {
+    exclude '**/build'
+    exclude '**/bin'
+    exclude '**/out'
+    include '**/*.csv'
+  }
+}
+
+task checkBirtCredentials(type: CheckCredentialsInRptdesign) {
+  group "Axelor application"
+  description "Generate change logs from unreleased entries."
+  files = fileTree(projectDir) {
+    exclude '**/build'
+    exclude '**/bin'
+    exclude '**/out'
+    include '**/*.rptdesign'
+  }
+}
+
+build.finalizedBy archiveReports

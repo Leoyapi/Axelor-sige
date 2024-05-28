@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<domain-models xmlns="http://axelor.com/xml/ns/domain-models"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/domain-models http://axelor.com/xml/ns/domain-models/domain-models_6.1.xsd">
+
+  <module name="human-resource" package="com.axelor.apps.hr.db"/>
+
+  <entity name="CeosHistoriqueFormation" cacheable="true">
+    <many-to-one ref="com.axelor.apps.hr.db.CeosThemeFormation" name="HistoriqueFormationTF"
+      title="Thème de la formation"/>
+    <many-to-one ref="com.axelor.apps.hr.db.CeosTypeFormation" name="HistoriqueFormationTyF" title="Type de formation"/>
+    <date name="dateDebutFormation" title="Date début de la formation"/>
+    <date name="dateFinFormation" title="Date fin de la formation"/>
+    <string name="nbrejourformation" title="Nombre de jours de formation"/>
+    <time name="nbreheureformation" title="Nombre d'heures de formation"/>
+    <string name="commentaire" large="true" title="Commentaires"/>
+  </entity>
+
+</domain-models>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<domain-models xmlns="http://axelor.com/xml/ns/domain-models"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/domain-models http://axelor.com/xml/ns/domain-models/domain-models_6.1.xsd">
+
+  <module name="human-resource" package="com.axelor.apps.hr.db"/>
+
+  <entity name="CeosDonneeAdministrative" cacheable="true">
+   <many-to-one ref="com.axelor.apps.hr.db.CeosTypePersonnel" name="donneeAdministratifTP" title="Type de Personnel"/>
+   <many-to-one ref="com.axelor.apps.hr.db.CeosStatut" name="donneeAdministratifSP" title="Statut du Personnel"/>
+   <many-to-one ref="com.axelor.apps.hr.db.CeosClassement" name="donneeAdministratifClass" title="Classement"/>
+   <many-to-one ref="com.axelor.apps.hr.db.CeosTypeRecrutement" name="donneeAdministratifTR" title="Type de recrutement"/>
+   <many-to-one ref="com.axelor.apps.hr.db.CeosGrade" name="donneeAdministratifGrade" title="Grade"/>
+   <many-to-one ref="com.axelor.apps.hr.db.CeosFonction" name="donneeAdministratifFonc" title="Fonction"/>
+   <date name="dateRecrutementFP" title="Date de recrutement à la fonction publique"/>
+   <date name="datePremierePriseServiceMena" title="Date de la première prise de service au MENA"/>
+   <date name="datePriseServiceMena" title="Date de prise de service au MENA"/>
+   <string name="dossierpersonnel" title="Dossier du personnel"/>
+   <string name="commentaires" title="Commentaires" large="true"/>
+  </entity>
+
+</domain-models>

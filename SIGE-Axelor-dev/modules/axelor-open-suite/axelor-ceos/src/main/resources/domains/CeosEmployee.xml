@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<domain-models xmlns="http://axelor.com/xml/ns/domain-models"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/domain-models http://axelor.com/xml/ns/domain-models/domain-models_6.1.xsd">
+
+  <module name="human-resource" package="com.axelor.apps.hr.db"/>
+
+  <entity name="CeosEmployee" cacheable="true">
+    <string name="matricule" title="Matricule" unique="true" required="true" max="7"/>
+    <string name="numPiece" title="Numéro de la pièce d'identité" unique="true" required="true"/>
+    <string name="nomJeuneFille" title="Nom de jeune fille"/>
+    <string name="nomPere" title="Nom du père"/>
+    <string name="nomMere" title="Nom de la mère"/>
+    <string name="adressePostale" title="Adresse Postale"/>
+    <string name="coordBanc" title="Coordonnées bancaires"/>
+    <string name="banque" title="Banque"/>
+    <integer name="typePiece" title="Type de pièce d'identité" selection="hr.CeostypePI.select"/>
+    <many-to-one ref="com.axelor.apps.base.db.Citizenship" name="nationalité" title="Nationalité 2"/>
+    <many-to-one ref="com.axelor.apps.hr.db.CeosCommune" name="EmployeeCN" title="Commune de naissance"/>
+    <many-to-one ref="com.axelor.apps.hr.db.CeosCommune" name="EmployeeCR" title="Commune de résidence"/>
+    <many-to-one ref="com.axelor.apps.hr.db.CeosSousPrefecture" name="EmployeeSPN" title="Sous-Préfecture de naissance"/>
+    <many-to-one ref="com.axelor.apps.hr.db.CeosSousPrefecture" name="EmployeeSPR" title="Sous-Préfecture de résidence"/>
+    <many-to-one ref="com.axelor.apps.hr.db.CeosDepartement" name="EmployeeDN" title="Département de naissance"/>
+    <many-to-one ref="com.axelor.apps.hr.db.CeosDepartement" name="EmployeeDR" title="Département de résidence"/>
+    <one-to-many ref="com.axelor.apps.hr.db.CeosAffiliation" name="EmployeeAff" title="Affiliation"/>
+  </entity>
+</domain-models>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<domain-models xmlns="http://axelor.com/xml/ns/domain-models"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/domain-models http://axelor.com/xml/ns/domain-models/domain-models_6.1.xsd">
+ 
+  <module name="human-resource" package="com.axelor.apps.hr.db"/>
+ 
+  <entity name="CeosAffiliation" cacheable="true">
+    <integer name="typeAff" title="Type d'affiliation" selection="hr.CeostypeAffilisation.select"/>
+    <string name="nom" title="Nom et Prénom"/>
+    <date name="dateDebut" title="Date début"/>
+    <date name="dateFin" title="Date fin"/>
+    <boolean name="statut" title="Statut" default="true"/>
+</entity>
+ 
+</domain-models>

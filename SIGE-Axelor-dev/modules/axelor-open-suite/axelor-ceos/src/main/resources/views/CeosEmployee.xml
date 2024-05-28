@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_6.1.xsd">
+
+  <form id="employee-form" name="CeosEmployee-form" title="Employee"
+    model="com.axelor.apps.hr.db.Employee" width="large"
+    onLoad="action-employee-method-set-social-network-url,action-attrs-employee-step-by-step-select-selection-in"
+    onNew="action-employee-record-default,action-attrs-employee-step-by-step-select-selection-in"
+    extension="true">
+    <extend target="//panel[@name='personalInfoPanel']/field[@name='birthDate']">
+      <insert position="before">
+       <field name="matricule" colSpan="4" title="Matricule"/>
+       <field name="CeostypePI" colSpan="4" title="Type de la pièce"/>
+       <field name="numPiece" colSpan="4" title="Numéro de la pièce"/>
+       <field name="nomJeuneFille" colSpan="4" title="Nom de jeune Fille"/>
+       <field name="nomPere" colSpan="4" title="Nom du père"/>
+       <field name="nomMere" colSpan="4" title="Nom de la mère"/>
+      </insert>
+      <insert position="after">
+        <field name="birthCommune" colSpan="4" canEdit="false" canNew="true" title="Commune de naissance"></field>
+        <field name="residCommune" colSpan="4" canEdit="false" canNew="true" title="Commune de résidence"></field>
+        <field name="birthSousPrefecture" colSpan="4" canEdit="false" canNew="true" title="Sous-péfecture de naissance"></field>
+        <field name="residSousPrefecture" colSpan="4" canEdit="false" canNew="true" title="Sous-péfecture de résidence"></field>
+        <field name="birthDepartement" colSpan="4" canEdit="false" canNew="true" title="Département de naissance"></field>
+        <field name="residDepartement" colSpan="4" canEdit="false" canNew="true" title="Département de résidence"></field>
+        <field name="adressePostale" colSpan="4" title="Adresse Postale"/>
+        <field name="coordBanc" colSpan="4" title="Coordonnées bancaires"/>
+        <field name="banque" colSpan="4" title="Banque"/>
+      </insert>
+    </extend>
+    
+    <extend target="//panel[@name='personalInfoPanel']/field[@name='maritalStatus']">
+      <insert position="after">
+       <field name="nomJeuneFille" colSpan="4" title="Nom de jeune Fille"/>
+       <field name="nomPere" colSpan="4" title="Nom du père"/>
+       <field name="nomMere" colSpan="4" title="Nom de la mère"/>
+       <field name="affiliation" colSpan="4" title="Affiliation"/>
+      </insert>
+    </extend>
+
+    <extend target="//panel[@name='personalInfoSBSPanel']/field[@name='citizenship']">
+    <insert position="after">
+      <field name="nationalite2" colSpan="4" title="Nationalité 2"/>
+    </insert>
+    </extend>
+
+  </form>
+</object-views>

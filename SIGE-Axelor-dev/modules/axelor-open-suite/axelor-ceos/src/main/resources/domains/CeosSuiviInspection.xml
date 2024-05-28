@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<domain-models xmlns="http://axelor.com/xml/ns/domain-models"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/domain-models http://axelor.com/xml/ns/domain-models/domain-models_6.1.xsd">
+
+  <module name="human-resource" package="com.axelor.apps.hr.db"/>
+
+  <entity name="CeosSuiviInspection" cacheable="true">
+    <many-to-one ref="com.axelor.apps.hr.db.CeosStatutEvaluation" name="suiviInspectionSE"
+      title="Statut de l'inspection"/>
+    <date name="datePrevueInspection" title="Date prévue de l'inspection"/>
+    <date name="dateReelleInspection" title="Date réelle de l'inspection"/>
+    <string name="sujetinspection" title="Sujet de l'inspection"/>
+    <many-to-one ref="com.axelor.apps.hr.db.CeosTypeInspection" name="SuiviInspectionTI"
+      title="Type de l'inspection"/>
+    <string name="inspecteur" title="Inspecteur"/>
+    <many-to-one ref="com.axelor.apps.hr.db.CeosCritereInspection" name="SuiviInspectionCI"
+      title="Critère de l'inspection"/>
+    <integer name="noteInspection" title="Note d'inspection"/>
+    <string name="commentaire" large="true" title="Remarques/commentaires"/>
+  </entity>
+
+</domain-models>

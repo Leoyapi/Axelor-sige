@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<domain-models xmlns="http://axelor.com/xml/ns/domain-models"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/domain-models http://axelor.com/xml/ns/domain-models/domain-models_6.1.xsd">
+
+  <module name="human-resource" package="com.axelor.apps.hr.db"/>
+
+  <entity name="CeosHistoriqueAffectation" cacheable="true">
+    <many-to-one ref="com.axelor.apps.hr.db.CeosEtablissement" name="HistoriqueAffectationEtab"
+      title="Etablissement d'affectation"/>
+    <date name="datedebutaffectation" title="Date début d'affection"/>
+    <date name="datedepartstructure" title="Date de départ de la structure"/>
+    <string name="typedocvalidation" title="Type de document de validation de l'affectation"/>
+    <string name="liendocvalidation" title="Lien vers le document de validation de l'affectation"/>
+    <string name="commentaires" title="Commentaires" large="true"/>
+  </entity>
+
+</domain-models>

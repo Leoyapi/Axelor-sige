@@ -1,0 +1,17 @@
+---
+name: SIGE RH
+code: sige rh
+typeSelect: standard
+installOrder: 20100
+description: |
+   SIGE RH Management
+image: app-sige.png
+modules: 
+   axelor-ceos
+dependsOn:
+   - base
+   - project
+   - account
+   - human-resource
+
+sequence: 30

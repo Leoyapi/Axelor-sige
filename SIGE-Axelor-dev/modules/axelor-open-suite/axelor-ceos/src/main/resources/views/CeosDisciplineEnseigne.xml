@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_6.1.xsd">
+
+  <grid name="CeosDiscipline-grid" title="Discipline Enseignée" model="com.axelor.apps.hr.db.CeosDiscipline">
+    <field name="code"/>
+    <field name="libelle"/>
+  </grid>
+
+  <form name="CeosDiscipline-form" title="Discipline Enseignée" model="com.axelor.apps.hr.db.CeosDiscipline">
+    <panel name="mainPanel">
+      <field name="code" title="Code" colSpan="6"/>
+      <field name="libelle" title="Libellé" colSpan="3"/>
+    </panel>
+  </form>
+
+</object-views>

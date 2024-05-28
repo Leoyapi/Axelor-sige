@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_6.1.xsd">
+
+  <menuitem name="donneeRef-root" parent="hr-root"
+    icon="fa-cog" icon-background="#84429f" title="Données de Références" order="1000"/>
+
+  <menuitem name="statut" parent="donneeRef-root" title="Statut" action="statut.all" />
+  <action-views name="statut.all" model="com.axelor.apps.hr.db.CeosStatut">
+    <view type="grid" name="CeosStatutPersonnel-grid"/>
+    <view type="form" name="CeosStatutPersonnel-form"/>
+  </action-views>
+
+
+</object-views>
